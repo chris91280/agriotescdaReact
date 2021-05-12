@@ -27,6 +27,7 @@ export default class EvaluationListe extends React.Component{
 
         console.log(this.props);
         const isFormateur = this.props.currentUser && this.props.currentUser.roles.includes("ROLE_FORMATEUR");
+        const isUser = this.props.currentuser && this.props.currentUser.roles.includes("ROLE_USER")
         return (
             <React.Fragment>
                 {!!this.props.searchWord && (<div>{this.props.produitsCount} produit(s) trouvés. Voici les résultats pour le mot-clé "{this.props.searchWord}"</div>)}
@@ -53,7 +54,7 @@ export default class EvaluationListe extends React.Component{
                             <th>description</th>
                             <th>durée</th>
                             <th>note</th>
-                            <th>csv_filename</th>
+                            <th>csv_file</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -65,11 +66,12 @@ export default class EvaluationListe extends React.Component{
                                 <td>{evaluation.description}</td>
                                 <td>{evaluation.durée}</td>
                                 <td>{evaluation.note}</td>
-                                <td>{evaluation.csv_filename}</td>
+                                <td>{evaluation.csv_file}</td>
                                 <td>
                                     <Link to = {this.props.match.url + '/'+evaluation.id}>Afficher</Link>
                                     <Link style={isFormateur ? {}: {display: "none" }} to={this.props.match.url + '/edit/'+evaluation.id}>Modifier</Link>
                                     <button style={isFormateur ? {}: {display: "none" }}  onClick={() => this.props.deleteCallback(evaluation.id)}>Supprimer</button>
+                                    <Link style={!isFormateur ? {} : {display:"none"}} to= {this.props.match.url + '/passerEvaluation/' + evaluation.id}>Passer l'evaluation</Link>
                                 </td>
                                     
                                 

@@ -140,7 +140,7 @@ export default class EvaluationFormulaire extends React.Component{
           .then((res)=> {
             console.log(res);
             this.setState({
-                produit: res
+                evaluation: res
               }
               )
           })

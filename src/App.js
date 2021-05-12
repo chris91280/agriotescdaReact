@@ -5,7 +5,7 @@ import {Link, Route} from 'react-router-dom';
 import Login from './Login';
 import AuthService from './AuthService';
 import AccessDenied from './AccessDenied';
-import Evaluations from './evaluations';
+import Evaluations from './Evaluations';
 
 class App extends React.Component{
   constructor(props){
@@ -52,9 +52,9 @@ class App extends React.Component{
     );
   }
   componentDidMount(){
-    let panier = JSON.parse(localStorage.getItem("panier")) || [];
-    this.setState({currentUser : AuthService.getCurrentUser(), panier: panier})
+    this.setState({currentUser : AuthService.getCurrentUser()})
   }
+    
   componentDidUpdate(){
     console.log("componentDidUpdate");
     localStorage.setItem("panier", JSON.stringify(this.state.panier));

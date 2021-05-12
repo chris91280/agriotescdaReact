@@ -23,7 +23,7 @@ class AuthService{
       }
     
       register(username, email, password) {
-        return axios.post(API_URL + "register", {
+        return axios.post(API_URL + "/register", {
           username,
           email,
           password
@@ -32,7 +32,7 @@ class AuthService{
     
       updateClient(client) {
         return axios
-          .post(API_URL + "register", {
+          .post(API_URL + "/register", {
             nom:client.nom,
             prenom:client.prenom
           })
@@ -45,7 +45,7 @@ class AuthService{
       }
       createFormateur(formateur) {
         return axios
-          .post(API_URL + "register", {
+          .post(API_URL + "/register", {
             nom:formateur.nom,
             prenom:formateur.prenom
           })
@@ -62,6 +62,11 @@ class AuthService{
       }
       isFormateur(user){
         return user && user.roles && user.roles.includes("ROLE_FORMATEUR");
+      }
+
+      isUser(user){
+        return user && user.roles && user.roles.includes("ROLE_USER");
+
       }
     }
     
