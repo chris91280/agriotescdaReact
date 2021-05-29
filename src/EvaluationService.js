@@ -10,7 +10,7 @@ class EvaluationService {
 
   createEvaluation(evaluation) {
     return axios.post(API_URL + 'formateur/evaluations/create', 
-                evaluation, { headers: authHeader() });
+                evaluation, { headers: {...authHeader(), 'content-type': 'multipart/form-data'} });
   }
 
   editEvaluation(evaluation) {
